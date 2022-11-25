@@ -25,7 +25,7 @@ The rest of this report will explain how ISO 27001 certification can adversely a
 
 # TSD - Services for Sensititve Data
 
-TSD is a special purpose eInfrastructure designed for working with sensitive personal data. It is hosted at, and operated by the Section for Research Servces at the University of Oslo's Center for IT. In production since 2014, it is a remote-login platform-as-a-service solution supporting more than 1600 research projects, 8000 researchers, and 80 institutions. Development and operations is staffed by 14 full-time employees. TSD is working towards ceritifcation in ISO 9001 and ISO 27001 in 2023. As part of this process, software development processes must be reviewed to ensure compliance with the required controls.
+TSD is a special purpose eInfrastructure designed for working with sensitive personal data (@tsd). It is hosted at, and operated by the Section for Research Servces at the University of Oslo's Center for IT. In production since 2014, it is a remote-login platform-as-a-service solution supporting more than 1600 research projects, 8000 researchers, and 80 institutions. Development and operations is staffed by 14 full-time employees. TSD is working towards ceritifcation in ISO 9001 and ISO 27001 in 2023. As part of this process, software development processes must be reviewed to ensure compliance with the required controls.
 
 # Agile software development at TSD
 
@@ -104,14 +104,32 @@ As mentioned in the discussion of control A.12.6.1, TSD uses open source softwar
 
 Analysis of the ISO 27001 control measures that will impact software development show that TSD's current agile process will be impacted in the following ways:
 
-1. Documentation: Policies, procedures
-2. Dependency management: vulnerability detection, risk assessment
+1. Dependency management: vulnerability detection, risk assessment
+2. Documentation: policies, procedures
 3. Testing: security testing during development, acceptance testing during release
+
+Dependency management is arguably the most significant challenge for TSD, and also the most important in terms of risk management. The dependencies running in production add to the system's Trusted Computing Base (TCB): the hardware and software necessary for enforcing all security rules (@tanenbaum, p601). If any of the dependencies of the TCB were to be compromised by, for example, a supply-chain attack, then the enforcement of TSD's security rules could be compromised.
+
+TSD's primary programming language for implementing backend web services is Python. Supply-chain attacks have recently been uncovered in the Python package ecosystem. A software supply-chain security company (@pypi_supply_chain) recently wrote about how attackers copy popular Python packages, rename them using a technique called typosquatting (choosing names that are _almost_ the same as the original), and inject malicious code as dependencies. In most cases the malicious code is obfuscated Python code which downloads an executable and runs it on the host machine. An inattentive user could easily include such a package as a dependency, and code would work.
+
+Datadog Security Labs (@pypi_fastapi) recently discovered malicious code injected into a previously non-malicious Python package, `fastapi-toolkit`. The malicious code added an HTTP endpoint to the web framework which allowed attackers to execute arbitrary SQL queries in the web application, given that they knew the value of a specific header. Other than with typosquatting, the package is actually legitimate, but access to the source code had likely been compromised. One can, therefore, be vulnerable to such attacks even if you used a legitimate package to begin with. These cases illustrate the importance of investing effort into dependency management.
 
 In sum, this amounts to a cultural change, and to a potential increase in development effort and time needed to release new features. The next section will explore a developement and operational methodology called SecDevOps, to see how it can help offset the potential devlopment costs associated with ISO 27001 compliance.
 
 # SecDevOps as a solution
 
-# Concrete suggestions
+Amazon Web Services, one of the world's leading cloud services providers defines DevOps as "the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity. Under a DevOps model, development and operations teams are no longer 'siloed'. Sometimes, these two teams are merged into a single team where the engineers work across the entire application lifecycle, from development and test to deployment to operations, and develop a range of skills not limited to a single function." (@devops). DevOps is characterised by a high degree of automation in development and deployment to allow scalable operations.
+
+The high velocity can however, be problematic for maintaining security. The danger is that security is seen as a brake on the pace of development - as is seen in the analysis above. The risk of such a view is that few people pay attention to security requirements in the development and release cycles, and that this exposes vulnerabilities in services. There is a greowing recognition that security must be incorporated into DevOps in a holistic manner (@secdevops), and that security must play a role from the outset, before any development happens. In this way SecDevOps can be seen as applying DevOps methodologies to the application lifecycle, but with security concerns being present along the way.
+
+TSD has the ingredients of both DevOps and SecDevOps in its agile development model. The next section will explore which concrete changes TSD can introduce in order to achieve an agile process which is compliant with ISO 27001, by applying a SecDevOps framework to its processes.
+
+# Recommendations
+
+* pull-request templates, deployment repo
+* pip-audit (dev and build), dependency change pull requests with specific review processes
+* containerised services for on-demand test environments
+
+# Conclusion
 
 # References
