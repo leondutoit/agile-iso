@@ -126,8 +126,26 @@ TSD has the ingredients of both DevOps and SecDevOps in its agile development mo
 
 # Recommendations
 
+SecDevOps provides a conceptual framework for applying security measures throughout the application lifecycle, while maintaining a DevOps/agile approach to software development. The analysis of ISO 27001 controls have identified three areas of which TSD needs to address in this regard:
+
+1. Dependency management: vulnerability detection, risk assessment
+2. Documentation: policies, procedures
+3. Testing: security testing during development, acceptance testing during release
+
+This section will make concrete recommendations for how SecDevOps can be applied in these areas, given the software development process outlined in Figure 1.
+
+## Dependency management
+
+To discover vulnerabilities in existing Python dependencies TSD can adopt the usage of `pip-audit` (@pip_audit) in both development and during the build process. The `pip-audit` package allows users to scan their dependencies based on the Python Packaging Advisory Database (@pypi_advisory_db) - a contributor to the distributed vulnerability database for Open Source (@osv). This will help detect known issues before the dependencies are used in production.
+
+In addition to adopting this tool, TSD can introduce a new type of pull request and code review: one designated to depenencies. If new dependencies and updates to existing dependencies are made separate from other logical code changes, then reviewers can direct their review efforts to auditing the dependencies themselves. Making this process explicit will help identify potential issues, and it fits well into existing code review practices.
+
+## Documentation
+
 * pull-request templates, deployment repo
-* pip-audit (dev and build), dependency change pull requests with specific review processes
+
+## Testing
+
 * containerised services for on-demand test environments
 
 # Conclusion
