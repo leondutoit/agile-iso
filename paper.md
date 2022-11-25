@@ -1,12 +1,12 @@
 ---
 title: "Agile software development under ISO 27001"
-date: "2022-11-22"
+date: "2022-11-26"
 author: "Leon du Toit"
 ---
 
 # Abstract
 
-The ISO 27001 standard lists a host of requirements for implementing IT security in an organisation. Conforming to requirements of the standard can raise the cost and friction involved in releasing new services and features in an agile manner. This paper will explore which tools and processes can be used to mitigate the potential clash between the goals of standard compliance, and sustaining an agile development culture. The paper is organised as a case study at the University of Oslo's Center for IT, where the Services for Sensitive Data is in the process of adopting ISO 27001. _Keywords: Agile, SecDevOps, ISO 27001_
+The ISO 27001 standard lists a host of requirements for implementing IT security in an organisation. Conforming to requirements of the standard can raise the cost and friction involved in releasing new services and features in an agile manner. This report will explore which tools and processes can be used to mitigate the potential clash between the goals of standard compliance, and sustaining an agile development culture. The report is organised as a case study at the University of Oslo's Center for IT, where the Services for Sensitive Data is in the process of adopting ISO 27001. _Keywords: Agile, SecDevOps, ISO 27001_
 
 # Introduction
 
@@ -24,6 +24,8 @@ At the same time the Section for Research Servics is working to certify TSD for 
 The rest of this report will explain how ISO 27001 certification can adversely affect TSD's agile development culture, and explore how SecDevOps can offer a solution to this conundrum.
 
 # TSD - Services for Sensititve Data
+
+TSD is a special purpose eInfrastructure designed for working with sensitive personal data. It is hosted at, and operated by the Section for Research Servces at the University of Oslo's Center for IT. In production since 2014, it is a remote-login platform-as-a-service solution supporting more than 1600 research projects, 8000 researchers, and 80 institutions. Development and operations is staffed by 14 full-time employees. TSD is working towards ceritifcation in ISO 9001 and ISO 27001 in 2023. As part of this process, software development processes must be reviewed to ensure compliance with the required controls.
 
 # Agile software development at TSD
 
@@ -102,12 +104,9 @@ As mentioned in the discussion of control A.12.6.1, TSD uses open source softwar
 
 Analysis of the ISO 27001 control measures that will impact software development show that TSD's current agile process will be impacted in the following ways:
 
-1. Prioritising documention, and process
-2. Procedures must be documented, and kept up-to-date
-3. More time spent on dependency management: vulnerability detection, risk assessment
-4. Security testing during development
-5. Documentation overhead during development and release
-6. More testing, prior to and after release
+1. Documentation: Policies, procedures
+2. Dependency management: vulnerability detection, risk assessment
+3. Testing: security testing during development, acceptance testing during release
 
 In sum, this amounts to a cultural change, and to a potential increase in development effort and time needed to release new features. The next section will explore a developement and operational methodology called SecDevOps, to see how it can help offset the potential devlopment costs associated with ISO 27001 compliance.
 
