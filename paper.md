@@ -142,12 +142,21 @@ In addition to adopting this tool, TSD can introduce a new type of pull request 
 
 ## Documentation
 
-* pull-request templates, deployment repo
+When deploying new code, the following has to be documented:
+
+* accpetance tests performed, and passed
+* no new risks introduced by the change
+
+TSD can use pull request templates offered by github to structure such information.
 
 ## Testing
 
-* containerised services for on-demand test environments
+Security testing must be applied during development, and acceptance testing must be performed prior to deployment. TSD's web service environment is a complex set of microservices which interact with one another via a message-oriented middleware. It can, therfore, be time consuming and challenging to set up test environments that match production.
+
+In keeping with the SecDevOps philosophy TSD can work towards containerising all of it services, so that one can specify and provision test environments on-demand using container orchestration tools. This will also solve problems associated with multiple changes being concurrently applied to a given test environment.
 
 # Conclusion
+
+The principles of agile development stand in relative opposition to the procedural controls manadated by the ISO 27001 standard. TSD has to reconcile these disparaties by changing its current agile development culture and process. SecDevOps provides a conceptual framework for adopting such changes. Analysis of the controls outlined by ISO 27001 has identified three key areas of change if TSD is to become compliant with the standard: 1) dependency management, 2) documentation, and 3) testing. This report has made recommendations for how TSD, and other organisations facing similar challenges, can leverage tools and processes to address these concerns, thereby maintaining an agile development culture, while at the same time being compliant with the controls mandated by ISO 27001.
 
 # References
