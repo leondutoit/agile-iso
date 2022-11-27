@@ -25,7 +25,7 @@ The rest of this report will explain how ISO 27001 certification can adversely a
 
 # TSD - Services for Sensititve Data
 
-TSD is a special purpose eInfrastructure designed for working with sensitive personal data (@tsd). It is hosted at, and operated by the Section for Research Servces at the University of Oslo's Center for IT. In production since 2014, it is a remote-login platform-as-a-service solution supporting more than 1600 research projects, 8000 researchers, and 80 institutions. Development and operations is staffed by 14 full-time employees. TSD is working towards ceritifcation in ISO 9001 and ISO 27001 in 2023. As part of this process, software development processes must be reviewed to ensure compliance with the required controls.
+TSD is a special purpose eInfrastructure designed for working with sensitive personal data (@tsd). It is hosted at UiO, and operated by the Section for Research Servces at the University of Oslo's Center for IT. In production since 2014, it is a remote-login platform-as-a-service solution supporting more than 1600 research projects, 8000 researchers, and 80 institutions. Development and operations is staffed by 14 full-time employees. TSD is working towards ceritifcation in ISO 9001 and ISO 27001 in 2023. As part of this process, software development processes must be reviewed to ensure compliance with the required controls.
 
 # Agile software development at TSD
 
@@ -39,7 +39,7 @@ While writing code, TSD developers run unit- and integration tests to ensure cor
 
 The new version is then built into an executable. The new version is first deployed to a test environment, where more integration tests are performed. If this uncovers any issues that were not caught by local testing during development, or during code review, then the necessary issues are fixed with a new pull request, reviewed, and deployed to test again, until all testing passes. Once deployed to production, users and/or stakehoders have the chance to give feedback. If needed, a new iterative cycle will begin.
 
-TSD has been growing continually at a fast pace in the last five years, with more than one new research project signing up each work day. At the same, the complexity of user requirements increase, as more software and integrations are used in research. Taken together this means that the devlopment team gives high priority to speed in the implementation of new features. Fast release of new services and features is a key component to scaling the service with few employees, but of course this has to be accomplished without compromising the service's information security policies.
+TSD has been growing continually at a fast pace in the last five years, with more than one new research project signing up each work day. At the same, the complexity of user requirements increase, as more software and integrations are used in research. Taken together this means that the devlopment team must give high priority to speed in the implementation of new features. Fast release of new services and features is a key component to scaling the service with few employees, but of course this has to be accomplished without compromising the service's information security policies.
 
 TSD has been able to apply agile software development and maintain its information security policies by building on top of a secure, and modular web development platform. At the same time TSD sees the need to pursue compliance with ISO 27001, as this will be an important strategic accomplishment, and will help with sustaining the effort for delivering secure IT services. The open question is how to achieve compliance without grinding the agile development process outlined above to a halt. The next section will explore the details of what compliance might mean for TSD's software development process.
 
@@ -62,13 +62,13 @@ Getting 100% coverage, and sufficient standardisation has the potential to ease 
 
 _"Information about technical vulnerabilities of information systems being used shall be obtained in a timely fashion, the organisation's exposure to such vulnerabilities evaluated and appropriate measures taken to address the associated risk."_
 
-TSD uses open source software in its development, and as such are exposed to vulnerabilities in the entire supply chain associated with its open source dependencies. Open source software repositories have varying levels of sophistication in their ability to detect and report on vulnerabilities in their hosted packages. TSD will have to do research to see which tools exist, and how they can be incorporated into the development cycle. In practice this will raise the cost of including any new dependencies, and the hope is that tools exist that can mitigate the increase in this cost.
+TSD uses open source software in its development, and as such is exposed to vulnerabilities in the entire supply chain associated with its open source dependencies. Open source software repositories have varying levels of sophistication in their ability to detect and report on vulnerabilities in their hosted packages. TSD will have to do research to see which tools exist, and how they can be incorporated into the development cycle. In practice this will raise the cost of including any new dependencies and updating existing dependencies.
 
 ## A.14.1.1 Information security requirements analysis and specification
 
 _"The information security related requirements shall be included in the requirements for new information systems or enhancements to existing information systems."_
 
-TSD already involves the IT security team in the design and implementation phase of new services and signifcant new features. TSD also has a culture of considering the security implications of releasing new features. The additional effort required is to document that this has been done, and to do so _in each and every change_. This will add some documentation overhead to development.
+TSD already involves the IT security team in the design and implementation phase of new services and signifcant new features. TSD also has a culture of considering the security implications of releasing new features. The additional effort required is to document that this has been done, and to do so _in each and every change_. This will add some documentation and communication overhead to development.
 
 ## A.14.2.2 System change control procedures
 
@@ -98,7 +98,7 @@ TSD already has a test environment where integration tests are performed before 
 
 _"Agreements with suppliers shall include requirements to address the information security risks associated with information and communications technology services and product supply chains."_
 
-As mentioned in the discussion of control A.12.6.1, TSD uses open source software in development. The licensing model of open source software gives the user no warranty at all. TSD must therefore, internalise any risk associated with using such software. The implication is that each explicit dependency must be included an a risk assessment. This raises the cost of development.
+As mentioned in the discussion of control A.12.6.1, TSD uses open source software in development. The licensing model of open source software gives the user no warranty at all. TSD must therefore, internalise any risk associated with using such software. The implication is that each explicit dependency must be included in a risk assessment. This raises the cost of development.
 
 # Problem statement
 
@@ -120,7 +120,7 @@ In sum, this amounts to a cultural change, and to a potential increase in develo
 
 Amazon Web Services, one of the world's leading cloud services providers defines DevOps as "the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity. Under a DevOps model, development and operations teams are no longer 'siloed'. Sometimes, these two teams are merged into a single team where the engineers work across the entire application lifecycle, from development and test to deployment to operations, and develop a range of skills not limited to a single function." (@devops). DevOps is characterised by a high degree of automation in development and deployment to allow scalable operations.
 
-The high velocity can however, be problematic for maintaining security. The danger is that security is seen as a brake on the pace of development - as is seen in the analysis above. The risk of such a view is that few people pay attention to security requirements in the development and release cycles, and that this exposes vulnerabilities in services. There is a greowing recognition that security must be incorporated into DevOps in a holistic manner (@secdevops), and that security must play a role from the outset, before any development happens. In this way SecDevOps can be seen as applying DevOps methodologies to the application lifecycle, but with security concerns being present along the way.
+The high velocity can however, be problematic for maintaining security. The danger is that security is seen as a brake on the pace of development - as is seen in the analysis above. The risk of such a view is that few people pay attention to security requirements in the development and release cycles, and that this exposes vulnerabilities in services. There is a growing recognition that security must be incorporated into DevOps in a holistic manner (@secdevops), and that security must play a role from the outset, before any development happens. In this way SecDevOps can be seen as applying DevOps methodologies to the application lifecycle, but with security concerns being present along the way.
 
 TSD has the ingredients of both DevOps and SecDevOps in its agile development model. The next section will explore which concrete changes TSD can introduce in order to achieve an agile process which is compliant with ISO 27001, by applying a SecDevOps framework to its processes.
 
@@ -157,6 +157,6 @@ In keeping with the SecDevOps philosophy TSD can work towards containerising all
 
 # Conclusion
 
-The principles of agile development stand in relative opposition to the procedural controls manadated by the ISO 27001 standard. TSD has to reconcile these disparaties by changing its current agile development culture and process. SecDevOps provides a conceptual framework for adopting such changes. Analysis of the controls outlined by ISO 27001 has identified three key areas of change if TSD is to become compliant with the standard: 1) dependency management, 2) documentation, and 3) testing. This report has made recommendations for how TSD, and other organisations facing similar challenges, can leverage tools and processes to address these concerns, thereby maintaining an agile development culture, while at the same time being compliant with the controls mandated by ISO 27001.
+The principles of agile development stand in relative opposition to the procedural controls manadated by the ISO 27001 standard. TSD has to reconcile these disparaties by changing its current agile development culture and process. SecDevOps provides a conceptual framework for adopting such changes: use DevOps-style automation with security in mind at each step. Analysis of the controls outlined by ISO 27001 has identified three key areas of change if TSD is to become compliant with the standard: 1) dependency management, 2) documentation, and 3) testing. This report has made recommendations for how TSD, and other organisations facing similar challenges, can leverage tools and processes to address these concerns, thereby maintaining an agile development culture, while at the same time being compliant with the controls mandated by ISO 27001.
 
 # References
