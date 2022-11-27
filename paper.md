@@ -114,7 +114,11 @@ TSD's primary programming language for implementing backend web services is Pyth
 
 Datadog Security Labs (@pypi_fastapi) recently discovered malicious code injected into a previously non-malicious Python package, `fastapi-toolkit`. The malicious code added an HTTP endpoint to the web framework which allowed attackers to execute arbitrary SQL queries in the web application, given that they knew the value of a specific header. Other than with typosquatting, the package is actually legitimate, but access to the source code had likely been compromised. One can, therefore, be vulnerable to such attacks even if you used a legitimate package to begin with. These cases illustrate the importance of investing effort into dependency management.
 
-In sum, this amounts to a cultural change, and to a potential increase in development effort and time needed to release new features. The next section will explore a developement and operational methodology called SecDevOps, to see how it can help offset the potential devlopment costs associated with ISO 27001 compliance.
+It is clear that identifying vulnerabilities in open source software is a time-consuming, yet important, activity. For TSD it will mean slower development. The same is true for increased amounts of documentation on every change. Documentation, unlike testing, cannot be fully automatated. As such it will take time away from solving development problems.
+
+To address dependency management, documentation and testing will require a cultural change in TSD. Addressing these areas will increase the effort and time needed to release new features. This makes it challenging, therefore, to maintain an Agile development culture while pursing ISO 27001 compliance.
+
+The next section will explore a developement and operational methodology called SecDevOps, to see how it can help offset the potential devlopment costs associated with ISO 27001 compliance.
 
 # SecDevOps as a solution
 
