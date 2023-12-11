@@ -8,7 +8,7 @@ As applied to TSD, at UiO.
 ```bash
 pandoc \
     -f markdown-implicit_figures \
-    --filter pandoc-citeproc \
+    --citeproc \
     --bibliography=paper.bib \
     --variable papersize=a4paper \
     -s paper.md \
